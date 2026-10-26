@@ -15,16 +15,26 @@
   </div>
 
   <main class="hoja">
-    <h1 data-campo="negocio">Quality impresiones</h1>
+    <!-- El logo ya dice "Quality impresiones"; el alt lo lee igual quien no ve la imagen -->
+    <h1><img class="logo" src="img/logo-quality.png" alt="Quality impresiones"></h1>
     <p class="subtitulo">Transferí fácil por alias</p>
 
     <!-- Acá se dibuja el QR (SVG, se imprime nítido a cualquier tamaño) -->
     <div class="qr" id="qr" role="img" aria-label="Código QR para copiar el alias"></div>
 
-    <p class="etiqueta">Alias</p>
-    <p class="alias" data-campo="alias">rolo.quality</p>
+    <p class="escanea">
+      <span class="flecha" aria-hidden="true">↑</span>
+      Escaneá con la <strong>cámara de tu celular</strong>
+    </p>
 
-    <p class="instrucciones">Escaneá el QR, tocá <strong>“Copiar alias”</strong> y transferí</p>
+    <!-- Pasos cortos y numerados: para que nadie se pierda -->
+    <ol class="pasos">
+      <li>Abrí la <strong>cámara</strong> y apuntá al código</li>
+      <li>Tocá el botón <strong>“Copiar alias”</strong></li>
+      <li>Pegalo en tu banco o billetera y <strong>transferí</strong></li>
+    </ol>
+
+    <p class="alias-pie">Alias: <strong data-campo="alias">rolo.quality</strong></p>
   </main>
 
   <script src="config.js"></script>

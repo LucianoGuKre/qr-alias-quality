@@ -1,11 +1,20 @@
 /* Estilos del cartel imprimible (cartel.html). */
 
+:root {
+  /* Colores sacados del logo de Quality */
+  --verde: #1DB717;
+  --lima: #B7ED12;
+  --amarillo: #DBEF1D;
+  /* Verde oscuro de la web de Quality: para textos y fondos con letra blanca */
+  --verde-oscuro: #1B4332;
+}
+
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   background: #d9dee5;
-  color: #000;
+  color: var(--verde-oscuro);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -17,7 +26,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 12px 16px;
-  background: #0a2540;
+  background: var(--verde-oscuro);
   color: #fff;
   font-size: 0.9rem;
 }
@@ -25,7 +34,7 @@ body {
   padding: 12px 20px;
   border: 0;
   border-radius: 10px;
-  background: #f5b400;
+  background: var(--amarillo);
   color: #000;
   font: inherit;
   font-weight: 700;
@@ -36,10 +45,11 @@ body {
 
 /* La "hoja": en pantalla simula un A4 vertical (210 x 297 mm) */
 .hoja {
+  position: relative;
   width: min(210mm, 100% - 32px);
   aspect-ratio: 210 / 297;
   margin: 24px auto;
-  padding: 6% 8%;
+  padding: 5% 7% 4%;
   background: #fff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -47,26 +57,80 @@ body {
   align-items: center;
   justify-content: space-between;
   text-align: center;
+  /* Franjas de marca arriba y abajo: verde, lima y amarillo como el logo */
+  border-top: 2.2vw solid var(--verde);
+  border-bottom: 2.2vw solid var(--verde);
 }
 
-h1 { margin: 0; font-size: clamp(1.6rem, 6vw, 3.4rem); font-weight: 900; line-height: 1.1; }
-.subtitulo { margin: 0; font-size: clamp(1.1rem, 3.6vw, 2rem); }
+h1 { margin: 0; line-height: 0; }
+.logo { width: 78%; max-width: 150mm; height: auto; }
+
+.subtitulo {
+  margin: 0;
+  padding: 0.25em 0.9em;
+  border-radius: 999px;
+  background: var(--verde-oscuro);
+  color: #fff;
+  font-size: clamp(1rem, 3.4vw, 1.9rem);
+  font-weight: 800;
+}
 
 /* El SVG del QR ya trae su margen blanco incluido */
-.qr { width: 72%; }
+.qr {
+  width: 58%;
+  padding: 1.2%;
+  border: 0.8vw solid var(--verde);
+  border-radius: 4%;
+}
 .qr svg { display: block; width: 100%; height: auto; }
 
-.etiqueta { margin: 0; font-size: clamp(0.9rem, 2.4vw, 1.3rem); letter-spacing: 0.15em; text-transform: uppercase; }
-.alias {
+/* La instrucción más importante, bien visible justo debajo del QR */
+.escanea {
   margin: 0;
-  padding: 0.15em 0.6em;
-  border: 3px solid #000;
-  border-radius: 12px;
-  font-size: clamp(1.6rem, 6.5vw, 3.6rem);
-  font-weight: 900;
-  word-break: break-all;
+  padding: 0.35em 0.8em;
+  border-radius: 14px;
+  background: var(--amarillo);
+  color: #000;
+  font-size: clamp(1rem, 3.6vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
 }
-.instrucciones { margin: 0; font-size: clamp(1rem, 3.2vw, 1.7rem); max-width: 22ch; }
+.flecha { font-size: 1.3em; font-weight: 900; margin-right: 0.15em; }
+
+.pasos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: paso;
+  text-align: left;
+  font-size: clamp(0.85rem, 2.7vw, 1.45rem);
+  line-height: 1.3;
+}
+.pasos li { counter-increment: paso; position: relative; padding-left: 2.4em; margin: 0.6em 0; }
+/* Números grandes en círculo verde */
+.pasos li::before {
+  content: counter(paso);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.8em;
+  height: 1.8em;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--verde-oscuro);
+  color: var(--lima);
+  font-weight: 900;
+}
+
+.alias-pie { margin: 0; font-size: clamp(0.9rem, 2.6vw, 1.4rem); }
+.alias-pie strong {
+  padding: 0.05em 0.4em;
+  border: 2px solid var(--verde);
+  border-radius: 8px;
+  font-size: 1.15em;
+}
 
 /* ---------- Impresión ---------- */
 @page { size: A4 portrait; margin: 0; }
@@ -79,17 +143,18 @@ h1 { margin: 0; font-size: clamp(1.6rem, 6vw, 3.4rem); font-weight: 900; line-he
     height: 297mm;
     aspect-ratio: auto;
     margin: 0;
-    padding: 18mm 18mm 22mm;
+    padding: 12mm 16mm 10mm;
     box-shadow: none;
-    page-break-after: avoid;
+    border-top-width: 6mm;
+    border-bottom-width: 6mm;
     break-inside: avoid;
   }
-  h1 { font-size: 40pt; }
+  .logo { width: 130mm; }
   .subtitulo { font-size: 22pt; }
-  .qr { width: 145mm; }           /* QR grande: se escanea bien a 1-2 metros */
-  .etiqueta { font-size: 14pt; }
-  .alias { font-size: 42pt; }
-  .instrucciones { font-size: 18pt; }
-  /* Que la impresora no "ahorre tinta" aclarando el negro del QR */
+  .qr { width: 118mm; border-width: 2mm; padding: 2mm; }   /* QR grande: se escanea bien a 1-2 metros */
+  .escanea { font-size: 21pt; }
+  .pasos { font-size: 16pt; }
+  .alias-pie { font-size: 15pt; }
+  /* Que la impresora no "ahorre tinta" sacando los fondos de color */
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

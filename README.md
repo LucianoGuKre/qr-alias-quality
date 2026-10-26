@@ -15,6 +15,7 @@ Sin backend, sin base de datos, sin build. HTML + CSS + JS puro.
 | `config.js` | **Nombre, alias y URL del QR.** Lo único que se toca normalmente |
 | `index.html` / `estilos.css` / `copiar.js` | Landing con el botón de copiar |
 | `cartel.html` / `cartel.css` / `cartel.js` | Cartel imprimible con el QR |
+| `img/logo-quality.png` | Logo de Quality (sacado de la web institucional, achicado a 900 px) |
 | `vendor/qrcode.js` | Librería del QR ([qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) 1.4.4, MIT). Va copiada en el repo: no depende de ningún servidor externo |
 
 ## Correrlo en local

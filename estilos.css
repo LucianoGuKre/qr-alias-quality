@@ -1,12 +1,15 @@
 /* Estilos de la landing (index.html). Pensado primero para celular. */
 
+/* Colores de Quality: verdes del logo y de su web, amarillo para detalles */
 :root {
-  --tinta: #0a2540;      /* texto principal, azul casi negro */
-  --suave: #3d4f63;      /* texto secundario, sigue pasando contraste AA */
-  --fondo: #eef2f7;
+  --tinta: #1B4332;      /* verde oscuro: texto principal */
+  --suave: #3f5a4c;      /* texto secundario, pasa contraste AA */
+  --fondo: #F0FBF2;
   --tarjeta: #ffffff;
-  --marca: #0b4fd0;      /* botón: contraste 6.6:1 con blanco */
-  --ok: #0a7a3d;
+  --marca: #1B4332;      /* botón: contraste alto con letra blanca */
+  --verde: #1DB717;      /* verde del logo, para bordes y detalles */
+  --amarillo: #DBEF1D;   /* amarillo del logo */
+  --ok: #157a10;
   --error: #b42318;
 }
 
@@ -32,8 +35,11 @@ body {
   border-radius: 24px;
   padding: 32px 24px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(10, 37, 64, 0.08);
+  box-shadow: 0 10px 30px rgba(27, 67, 50, 0.1);
+  border-top: 8px solid var(--verde);
 }
+
+.logo { display: block; width: 78%; height: auto; margin: 0 auto 16px; }
 
 h1 { font-size: clamp(1.6rem, 7vw, 2.1rem); margin: 0 0 4px; line-height: 1.15; }
 .subtitulo { font-size: 1.15rem; color: var(--suave); margin: 0 0 28px; }
@@ -50,7 +56,8 @@ h1 { font-size: clamp(1.6rem, 7vw, 2.1rem); margin: 0 0 4px; line-height: 1.15; 
 .alias {
   margin: 0 0 24px;
   padding: 16px 12px;
-  border: 2px dashed #b6c3d4;
+  border: 3px dashed var(--verde);
+  background: #fbfde8; /* amarillo muy suave */
   border-radius: 16px;
   font-size: clamp(1.8rem, 9vw, 2.4rem);
   font-weight: 800;
@@ -72,8 +79,10 @@ h1 { font-size: clamp(1.6rem, 7vw, 2.1rem); margin: 0 0 4px; line-height: 1.15; 
   transition: background-color 0.2s, transform 0.1s;
 }
 .boton:active { transform: scale(0.98); }
-.boton:focus-visible { outline: 4px solid #f5b400; outline-offset: 3px; }
+.boton:focus-visible { outline: 4px solid var(--amarillo); outline-offset: 3px; }
 .boton.copiado { background: var(--ok); }
+.boton::after { content: " 📋"; }
+.boton.copiado::after { content: ""; }
 
 .aviso { min-height: 1.5em; margin: 14px 0 0; font-size: 1.05rem; font-weight: 600; color: var(--ok); }
 .aviso.error { color: var(--error); }
