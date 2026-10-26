@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quality impresiones · Alias para transferir</title>
+  <meta name="description" content="Copiá el alias rolo.quality y transferí fácil desde tu banco o billetera.">
+  <meta name="theme-color" content="#0a2540">
+
+  <!-- Vista previa al compartir el link (WhatsApp, Instagram, etc.).
+       Los buscadores y WhatsApp no ejecutan JS: si cambiás el alias o el nombre, cambialos acá también. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Quality impresiones · Transferí fácil por alias">
+  <meta property="og:description" content="Alias: rolo.quality — tocá “Copiar alias” y transferí.">
+  <meta property="og:url" content="https://lucianogukre.github.io/qr-alias-quality/">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💸</text></svg>">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="tarjeta">
+    <!-- Los textos con data-campo se completan desde config.js -->
+    <h1 data-campo="negocio">Quality impresiones</h1>
+    <p class="subtitulo">Transferí fácil por alias</p>
+
+    <p class="etiqueta" id="etiqueta-alias">Alias</p>
+    <p class="alias" id="alias" data-campo="alias" aria-labelledby="etiqueta-alias">rolo.quality</p>
+
+    <button class="boton" id="copiar" type="button">Copiar alias</button>
+
+    <!-- aria-live: los lectores de pantalla anuncian el mensaje cuando aparece -->
+    <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+
+    <ol class="pasos">
+      <li>Tocá <strong>Copiar alias</strong>.</li>
+      <li>Abrí tu banco o billetera.</li>
+      <li>Pegá el alias y transferí.</li>
+    </ol>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="copiar.js"></script>
+</body>
+</html>

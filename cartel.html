@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cartel para imprimir · Quality impresiones</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="cartel.css">
+</head>
+<body>
+  <!-- Barra que solo se ve en pantalla, no sale en la impresión -->
+  <div class="barra">
+    <button type="button" onclick="window.print()">🖨️ Imprimir cartel (A4)</button>
+    <span>QR apunta a: <code id="destino"></code></span>
+  </div>
+
+  <main class="hoja">
+    <h1 data-campo="negocio">Quality impresiones</h1>
+    <p class="subtitulo">Transferí fácil por alias</p>
+
+    <!-- Acá se dibuja el QR (SVG, se imprime nítido a cualquier tamaño) -->
+    <div class="qr" id="qr" role="img" aria-label="Código QR para copiar el alias"></div>
+
+    <p class="etiqueta">Alias</p>
+    <p class="alias" data-campo="alias">rolo.quality</p>
+
+    <p class="instrucciones">Escaneá el QR, tocá <strong>“Copiar alias”</strong> y transferí</p>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="vendor/qrcode.js"></script>
+  <script src="cartel.js"></script>
+</body>
+</html>

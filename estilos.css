@@ -1,0 +1,92 @@
+/* Estilos de la landing (index.html). Pensado primero para celular. */
+
+:root {
+  --tinta: #0a2540;      /* texto principal, azul casi negro */
+  --suave: #3d4f63;      /* texto secundario, sigue pasando contraste AA */
+  --fondo: #eef2f7;
+  --tarjeta: #ffffff;
+  --marca: #0b4fd0;      /* botón: contraste 6.6:1 con blanco */
+  --ok: #0a7a3d;
+  --error: #b42318;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.4;
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 440px;
+  background: var(--tarjeta);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(10, 37, 64, 0.08);
+}
+
+h1 { font-size: clamp(1.6rem, 7vw, 2.1rem); margin: 0 0 4px; line-height: 1.15; }
+.subtitulo { font-size: 1.15rem; color: var(--suave); margin: 0 0 28px; }
+
+.etiqueta {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--suave);
+}
+
+.alias {
+  margin: 0 0 24px;
+  padding: 16px 12px;
+  border: 2px dashed #b6c3d4;
+  border-radius: 16px;
+  font-size: clamp(1.8rem, 9vw, 2.4rem);
+  font-weight: 800;
+  word-break: break-all;
+  user-select: all; /* un toque largo selecciona todo el alias */
+}
+
+.boton {
+  width: 100%;
+  min-height: 64px;           /* bien grande para cualquier dedo */
+  border: 0;
+  border-radius: 16px;
+  background: var(--marca);
+  color: #fff;
+  font: inherit;
+  font-size: 1.35rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.boton:active { transform: scale(0.98); }
+.boton:focus-visible { outline: 4px solid #f5b400; outline-offset: 3px; }
+.boton.copiado { background: var(--ok); }
+
+.aviso { min-height: 1.5em; margin: 14px 0 0; font-size: 1.05rem; font-weight: 600; color: var(--ok); }
+.aviso.error { color: var(--error); }
+
+.pasos {
+  text-align: left;
+  margin: 20px 0 0;
+  padding-left: 1.4em;
+  font-size: 1.05rem;
+  color: var(--suave);
+}
+.pasos li { margin: 4px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .boton { transition: none; }
+}
